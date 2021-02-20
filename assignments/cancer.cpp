@@ -9,25 +9,50 @@ class Cancer
 		int id_number;
 		string affected_location;
 		string stage;
-	
-	public:
 
+	public:
 		void setName(string value)
 		{
-			name = value; // name is initiated in setter 
+			name = value; 
 		}
 
-		string getName() // data type string 
+		string getName() 
 		{
-			return name;  // returning value of name with same data type of name in the private section
+			return name;
 		}
 
-		// setters and getters are then repeated this way for others
+		void setID(int num)
+		{
+			id_number = num; 
+		}
 
-		
+		int getID() 
+		{
+			return id_number;
+		}
+
+		void setLocation(string affected)
+		{
+			affected_location = affected; 
+		}
+
+		string getLocation() 
+		{
+			return affected_location;
+		}	
+
+		void setStage(string stage_)
+		{
+			stage = stage_; 
+		}
+
+		string getStage() 
+		{
+			return stage;
+		}
 };
 
 int main()
 {
-	cout << "hello world" << endl;
+
 }

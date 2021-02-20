@@ -50,9 +50,24 @@ class Cancer
 		{
 			return stage;
 		}
+
+		Cancer() // default constructor 
+		{
+			name = "";
+			id_number = 0;	
+			affected_location = "";
+			stage = "";
+		}
+
 };
 
 int main()
 {
+	Cancer c1; // default called
+      	 
+	cout << "Name: " << c1.getName() << endl;
+	cout << "ID: " << c1.getID() << endl;
+	cout << "Location: " << c1.getLocation() << endl;
+	cout << "Stage: " << c1.getStage() << endl;
 
 }

@@ -39,9 +39,6 @@ void Solution::print(int *nums, int amogus)
 
 	for(int i = 0; i < amogus; i++)
 	{
-		*(nums + i);
-
-		cout << i << endl;
-		cout << *nums << endl;
+		cout << *(nums + i) << endl;
 	}	
 }

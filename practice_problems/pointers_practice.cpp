@@ -4,8 +4,8 @@ using namespace std;
 class Solution
 {
 	public:
-		void print(int *nums, int amogus);
-		void sort();
+		void print(int *nums, int amount);
+		void sort(int *x, int n);
 		void average();
 };
 
@@ -19,26 +19,41 @@ int main()
 
 	cin >> amount;
 
-	int scores[amount], *scoresptr;
+	int *scoresptr = nullptr;
 
-	scoresptr = scores;
+	scoresptr = new int[amount];
 
 	for(int i = 0; i < amount; i++)
 	{
-		cin >> scores[i];
+		cin >> scoresptr[i];
 	}
 
-	int size = sizeof(scores) / sizeof(scores[0]);
-
-	caller->print(scoresptr, size);
+	caller->sort(scoresptr, amount);
+	caller->print(scoresptr, amount);
 }
 
-void Solution::print(int *nums, int amogus)
+void Solution::print(int *nums, int amount)
 {
 	cout << endl;
 
-	for(int i = 0; i < amogus; i++)
+	for(int i = 0; i < amount; i++)
 	{
 		cout << *(nums + i) << endl;
 	}	
+}
+
+void Solution::sort(int *x, int n)
+{
+	for(int i = 0; i < n; ++i)
+	{
+		for(int j = 0; j < n - i; ++j)
+		{
+			if(x[j] > x[j + 1])
+			{
+				int temp = x[j];
+				x[j] = x[j + 1];
+				x[j + 1] = temp;
+			}
+		}
+	}
 }

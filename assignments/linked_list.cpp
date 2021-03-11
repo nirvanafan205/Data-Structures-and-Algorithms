@@ -18,6 +18,7 @@ void LL::appending(LL** head, int new_info) //definitions
 {
 	LL* allocating = new LL();
 
+	//tail
 	LL *last = *head;
 
 	allocating->data = new_info;
@@ -31,7 +32,6 @@ void LL::appending(LL** head, int new_info) //definitions
 	}
 
 	//traverse until the last node
-
 	while(last->next != NULL)
 	{
 		last = last->next;
@@ -40,7 +40,6 @@ void LL::appending(LL** head, int new_info) //definitions
 	// change the next of the last node
 	last->next = allocating;
 	return;
-
 }
 
 void LL::inserting() // accessing member variables 
@@ -60,7 +59,6 @@ void LL::print(LL *node)
 		cout << " " << node->data;
 		node = node->next;
 	}
-
 }
 
 int main()
@@ -74,5 +72,4 @@ int main()
 	cout << "Linked list appended: ";
 	caller->print(head);
 	cout << endl;
-
 }

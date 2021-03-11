@@ -16,13 +16,17 @@ class LL
 
 void LL::appending(LL** head, int new_info) //definitions
 {
+	//allocating node
 	LL* allocating = new LL();
 
 	//tail
 	LL *last = *head;
 
+	
+	// making node the value thats passed in main
 	allocating->data = new_info;
 
+	//making new node NULL for the end of linked list
 	allocating->next = NULL;
 
 	if(*head == NULL)
@@ -63,9 +67,11 @@ void LL::print(LL *node)
 
 int main()
 {
+	//setting deafult node null incase its only node in linked list
 	LL* head = NULL;
 	LL* caller;
 
+	//passing through value calling appending function
 	caller->appending(&head, 7);
 	caller->appending(&head, 9);
 

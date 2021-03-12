@@ -9,6 +9,7 @@ class LL
 		void inserting();
 		void deleting();
 		void print(LL *node);
+		bool die(const string & msg);
 
 		int data;
 		LL *next;
@@ -22,7 +23,6 @@ void LL::appending(LL** head, int new_info) //definitions
 	//tail
 	LL *last = *head;
 
-	
 	// making node the value thats passed in main
 	allocating->data = new_info;
 
@@ -64,7 +64,16 @@ void LL::print(LL *node)
 		cout << " " << node->data;
 		node = node->next;
 	}
+
+	cout << endl;
 }
+
+bool LL::die(const string & msg)
+{
+	cout << "Fatal error: " << msg << endl;
+	exit(EXIT_FAILURE);	
+}
+
 
 int main()
 {
@@ -72,13 +81,40 @@ int main()
 	LL* head = NULL;
 	LL* caller;
 
-	//passing through value calling appending function
-	caller->appending(&head, 8);
-	caller->appending(&head, 2);
-	caller->appending(&head, 4);
-	caller->appending(&head, 9);
+	cout << "How many nodes to append?" << endl;
 
+	int amount;
+
+	cin >> amount;
+
+	cout << "Input node values" << endl;
+	int node_input;
+
+	for(int i = 0; i < amount; i++)
+	{
+		cin >> node_input;
+		caller->appending(&head, node_input);
+	}
+
+	//passing through value calling appending function
 	cout << "Linked list appended:";
 	caller->print(head);
-	cout << endl;
+
+	cout << "Nodes inside of linked list" << amount << "How many of said nodes would you delete?" << endl;
+
+	int delete_nodes_amount;
+
+	cin >> delete_nodes_amount;
+
+	int node_position;
+
+	for(int b = 0; b < delete_nodes_amount)
+	{
+		cin >> node_position;
+
+		if(node_position > amount)
+		{
+			die("Node position doesn't exist");
+		}
+	}
 }

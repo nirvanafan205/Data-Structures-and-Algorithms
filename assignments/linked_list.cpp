@@ -29,6 +29,7 @@ void LL::appending(LL** head, int new_info) //definitions
 	//making new node NULL for the end of linked list
 	allocating->next = NULL;
 
+	//checking if linked list is empty, new node is made head 
 	if(*head == NULL)
 	{
 		*head = allocating;
@@ -72,10 +73,12 @@ int main()
 	LL* caller;
 
 	//passing through value calling appending function
-	caller->appending(&head, 7);
+	caller->appending(&head, 8);
+	caller->appending(&head, 2);
+	caller->appending(&head, 4);
 	caller->appending(&head, 9);
 
-	cout << "Linked list appended: ";
+	cout << "Linked list appended:";
 	caller->print(head);
 	cout << endl;
 }

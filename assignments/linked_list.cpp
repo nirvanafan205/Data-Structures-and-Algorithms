@@ -6,9 +6,11 @@ class LL
 {
 	public:
 		void appending(LL** head, int new_info);  //declaration
-		void inserting();
+		void inserting(LL** current, int pos, int data, int size);
 		void deleting(LL** head, int key);
+		LL* getNode(int data);
 		void print(LL *node);
+		int getCount(LL* head);
 		bool die(const string & msg);
 
 		int data;
@@ -46,6 +48,12 @@ int main()
 
 	cin >> delete_nodes_amount;
 
+	cout << "Enter node key number to delete node from the linked list " << endl;
+
+	caller->print(head);
+
+	cout << endl;
+
 	int node_number;
 
 	for(int b = 0; b < delete_nodes_amount; b++)
@@ -53,15 +61,37 @@ int main()
 		cin >> node_number;
 
 		caller->deleting(&head, node_number);
-
-		if(node_number > amount)
-		{
-			caller->die("Node doesn't exist");
-		}
 	}
 
-	cout << endl << "Linked list deleted nodes:";
+	cout << endl << "Linked list after with deleted nodes:";
 	caller->print(head);
+
+	cout << "amount of nodes in linked list " << caller->getCount(head) << endl;
+
+	int size = caller->getCount(head);
+
+	cout << "how many nodes to insert?" << endl;
+
+	int insert_amount;
+
+	cin >> insert_amount;
+
+	cout << "Enter position in linked list to insert node then enter key" << endl;
+
+	int position, key;
+
+	for(int i = 0; i < insert_amount; i++)
+	{
+		cin >> position;
+		cin >> key;
+
+		caller->inserting(&head, position, key, size);
+
+		int size = caller->getCount(head);
+		cout << endl << "Linked list after inserting nodes:";
+
+		caller->print(head);
+	}
 }
 
 void LL::appending(LL** head, int new_info) //definitions
@@ -96,9 +126,40 @@ void LL::appending(LL** head, int new_info) //definitions
 	return;
 }
 
-void LL::inserting() // accessing member variables 
+void LL::inserting(LL** current, int pos, int data, int size) // accessing member variables 
 {
-	//do something
+	LL* call;
+
+	if(pos < 1 || pos > size + 1)
+	{
+		call->die("Invalid position");
+	}
+
+	else
+	{
+		while(pos--)
+		{
+			if(pos == 0)
+			{
+				LL* temp = call->getNode(data);
+				temp->next = *current;
+				*current = temp;
+			}
+
+			else
+			{
+				current = &(*current)->next;
+			}
+		}
+	}
+}
+
+LL* LL::getNode(int data)
+{
+	LL* newNode = new LL();
+	newNode->data = data;
+	newNode->next = NULL;
+	return newNode;
 }
 
 void LL::deleting(LL** head, int key)
@@ -143,6 +204,20 @@ void LL::print(LL *node)
 	}
 
 	cout << endl;
+}
+
+int LL::getCount(LL* head)
+{
+	int count = 0;
+	LL* current = head;
+
+	while(current != NULL)
+	{
+		count++;
+		current = current->next;
+	}
+
+	return count;
 }
 
 bool LL::die(const string & msg)

@@ -5,13 +5,14 @@ using namespace std;
 class LL
 {
 	public:
-		void appending(LL** head, int new_info);  //declaration
+		void appending(LL** head, int new_info);  //declarations
 		void inserting(LL** current, int pos, int data, int size);
 		void deleting(LL** head, int key);
 		LL* getNode(int data);
 		void print(LL *node);
 		int getCount(LL* head);
 		bool die(const string & msg);
+		~LinkedList();
 
 		int data;
 		LL *next;
@@ -130,7 +131,7 @@ void LL::inserting(LL** current, int pos, int data, int size) // accessing membe
 {
 	LL* call;
 
-	if(pos < 1 || pos > size + 1)
+	if(pos < 1 || pos > size + 1) //checks if input position is less than amount of nodes or greater
 	{
 		call->die("Invalid position");
 	}
@@ -150,8 +151,7 @@ void LL::inserting(LL** current, int pos, int data, int size) // accessing membe
 			{
 				current = &(*current)->next;
 			}
-		}
-	}
+		} }
 }
 
 LL* LL::getNode(int data)
@@ -206,7 +206,7 @@ void LL::print(LL *node)
 	cout << endl;
 }
 
-int LL::getCount(LL* head)
+int LL::getCount(LL* head) //counts how many nodes inside of linked list
 {
 	int count = 0;
 	LL* current = head;
@@ -220,7 +220,7 @@ int LL::getCount(LL* head)
 	return count;
 }
 
-bool LL::die(const string & msg)
+bool LL::die(const string & msg) //ends program on bad input
 {
 	cout << "Fatal error: " << msg << endl;
 	exit(EXIT_FAILURE);	

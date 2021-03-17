@@ -12,7 +12,7 @@ class LL
 		void print(LL *node);
 		int getCount(LL* head);
 		bool die(const string & msg);
-		~LinkedList();
+		~LL();
 
 		int data;
 		LL *next;
@@ -93,6 +93,8 @@ int main()
 
 		caller->print(head);
 	}
+
+	delete head; //destructor called and deletes linked list
 }
 
 void LL::appending(LL** head, int new_info) //definitions
@@ -151,7 +153,8 @@ void LL::inserting(LL** current, int pos, int data, int size) // accessing membe
 			{
 				current = &(*current)->next;
 			}
-		} }
+		} 
+	}
 }
 
 LL* LL::getNode(int data)
@@ -218,6 +221,23 @@ int LL::getCount(LL* head) //counts how many nodes inside of linked list
 	}
 
 	return count;
+}
+
+LL::~LL()
+{
+	LL *nodePtr;
+	LL *nextNode;
+
+	nodePtr = next;
+
+	while( nodePtr != NULL)
+	{
+		nextNode = nodePtr->next;
+
+		delete nodePtr;
+
+		nodePtr = nextNode;
+	}
 }
 
 bool LL::die(const string & msg) //ends program on bad input

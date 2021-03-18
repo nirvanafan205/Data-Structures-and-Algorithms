@@ -1,16 +1,7 @@
 #include <iostream>
+#include "classes.h"
 
 using namespace std;
-
-class Patient
-{
-
-};
-
-class CancerPatient : public Patient
-{
-
-};
 
 int main()
 {

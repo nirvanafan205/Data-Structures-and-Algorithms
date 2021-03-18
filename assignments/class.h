@@ -25,9 +25,14 @@ class Patient
 			return name;
 		}
 
-		void setAdress(string home)
+		void setAddress(string home)
 		{
 			address = home;
+		}
+
+		string getAddress()
+		{
+			return address
 		}
 
 		void setNumber(int digits)
@@ -50,24 +55,25 @@ class Patient
 			return gender;
 		}
 
-		void set()
+		void setFile(int file_info)
 		{
-
+			file_number = file_info;
 		}
 
-		void set()
+		int getFile()
 		{
-
+			return file_number;
 		}
 
-		void set()
+		void setRegistration(int reg_number)
 		{
-
+			registration_date = reg_number;
 		}
 
-
-
-
+		int getRegistration()
+		{
+			return registration_date;
+		}
 };
 
 class CancerPatient : public Patient

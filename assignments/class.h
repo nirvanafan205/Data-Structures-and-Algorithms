@@ -87,4 +87,43 @@ class CancerPatient : public Patient
 
 	public:
 
+		void setCancerType(string type)
+		{
+			cancer_type = type;
+		}
+
+		string getCancerType()
+		{
+			return cancer_type;
+		}
+
+		void setCancerStage(int stage)
+		{
+			cancer_stage = stage;
+		}
+
+		int getStage()
+		{
+			return cancer_stage;
+		}
+
+		void setDate(int date)
+		{
+			diagnoses_date = date;
+		}
+
+		int getDate()
+		{
+			return diagnoses_date;
+		}
+
+		void setMedications(string med)
+		{
+			medications = med;
+		}
+
+		string getMedications()
+		{
+			return medications 
+		}
 };

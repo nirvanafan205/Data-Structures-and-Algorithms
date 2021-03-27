@@ -77,12 +77,31 @@ int main()
 
 	cin >> insert_amount;
 
-	cout << "Enter position in linked list to insert node then enter key" << endl;
-
 	int position, key;
+
+	if(insert_amount == 0)
+	{
+		position, key = 1;
+		int size = caller->getCount(head);
+
+		caller->inserting(&head, position, key, size);
+		cout << "Linked List with node added to not be empty:";
+		caller->print(head);
+	}
 
 	for(int i = 0; i < insert_amount; i++)
 	{
+		if(head == NULL)
+		{
+			position, key = 1;
+			int size = caller->getCount(head);
+
+			caller->inserting(&head, position, key, size);
+			cout << "Linked List with node added";
+			caller->print(head);
+		}
+
+		cout << "Enter position in linked list to insert node then enter key" << endl;
 		cin >> position;
 		cin >> key;
 
@@ -133,9 +152,9 @@ void LL::inserting(LL** current, int pos, int data, int size) // accessing membe
 {
 	LL* call;
 
-	if(pos < 1 || pos > size + 1) //checks if input position is less than amount of nodes or greater
+	if(*current == NULL )
 	{
-		call->die("Invalid position");
+		call->appending(current, 9);
 	}
 
 	else

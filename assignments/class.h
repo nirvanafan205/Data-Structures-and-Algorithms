@@ -17,7 +17,7 @@ class Patient
 
 		void setName(string name_)
 		{
-			name = name_	
+			name = name_;
 		}
 
 		string getName()
@@ -32,7 +32,7 @@ class Patient
 
 		string getAddress()
 		{
-			return address
+			return address;
 		}
 
 		void setNumber(int digits)
@@ -74,6 +74,15 @@ class Patient
 		{
 			return registration_date;
 		}
+
+		void print()
+		{
+			cout << "Patient information" << endl;
+			//patients class info
+
+			cout << "Cancer information" << endl;
+			//CancerPatient's class info
+		}
 };
 
 class CancerPatient : public Patient
@@ -86,6 +95,8 @@ class CancerPatient : public Patient
 		string medications;
 
 	public:
+
+		Patient caller;
 
 		void setCancerType(string type)
 		{
@@ -124,6 +135,11 @@ class CancerPatient : public Patient
 
 		string getMedications()
 		{
-			return medications 
+			return medications;
+		}
+
+		void printC()
+		{
+			caller.print();			
 		}
 };

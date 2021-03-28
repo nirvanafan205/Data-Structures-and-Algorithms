@@ -1,9 +1,11 @@
 #include <iostream>
-#include "classes.h"
+#include "class.h"
 
 using namespace std;
 
 int main()
 {
+	CancerPatient input;
 
+	input.print();
 }

@@ -5,7 +5,7 @@ using namespace std;
 class projectx
 {
 	public:
-		void passFail(); // definition
+		projectx passFail(); // definition
 };
 
 
@@ -16,9 +16,10 @@ int main()
 	projectx* patients[] = {};
 
 	caller->passFail();
+
 }
 
-void projectx::passFail() // declaration
+projectx projectx::passFail() // declaration
 {
 	cout << "Hello World" << endl;
 }

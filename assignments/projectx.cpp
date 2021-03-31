@@ -11,10 +11,22 @@ class projectx
 		int finalScore;
 
 	public:
-		projectx passFail(projectx *nums[]); // definition
-		projectx finalExam(projectx *nums[]);
-		projectx essay(projectx *nums[]);
+		//lab activity info
 		projectx lab(projectx *nums[]);
+		
+		void setLabscore(int labS)
+		{
+			labScore = labS;
+		}
+
+		int getLabscore()
+		{
+			return labScore;
+		}
+
+
+		//passFail info
+		projectx passFail(projectx *nums[]); // definition
 
 		void setGrade(int score)
 		{
@@ -25,6 +37,34 @@ class projectx
 		{
 			return grade;
 		} 
+
+		// Final Exam info
+		projectx finalExam(projectx *nums[]);
+
+		void setEssayScore(int escore)
+		{
+			essayScore = escore;
+		}
+
+		int getEssayScore()
+		{
+			return essayScore;
+		}
+
+		projectx essay(projectx *nums[]);
+
+		void setFinals(int fScore)
+		{
+			finalScore = fScore;	
+		}
+
+		int getFinals()
+		{
+			return finalScore;
+		}
+
+
+		//constructors 
 		projectx(int num)
 		{
 			grade = num;

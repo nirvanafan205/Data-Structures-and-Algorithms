@@ -9,14 +9,14 @@ class LL
 		void inserting(LL** current, int pos, int data, int size);
 		void deleting(LL** head, int key);
 		LL* getNode(int data);
+		bool die(const string & msg);
 		void print(LL *node);
 		int getCount(LL* head);
-		bool die(const string & msg);
-		~LL();
 
 		int data;
 		LL *next;
 };
+
 
 int main()
 {
@@ -79,16 +79,6 @@ int main()
 
 	int position, key;
 
-	if(insert_amount == 0)
-	{
-		position, key = 1;
-		int size = caller->getCount(head);
-
-		caller->inserting(&head, position, key, size);
-		cout << "Linked List with node added to not be empty:";
-		caller->print(head);
-	}
-
 	for(int i = 0; i < insert_amount; i++)
 	{
 		if(head == NULL)
@@ -113,7 +103,6 @@ int main()
 		caller->print(head);
 	}
 
-	delete head; //destructor called and deletes linked list
 }
 
 void LL::appending(LL** head, int new_info) //definitions
@@ -152,9 +141,9 @@ void LL::inserting(LL** current, int pos, int data, int size) // accessing membe
 {
 	LL* call;
 
-	if(*current == NULL )
+	if(pos < 1 || pos > size + 1)
 	{
-		call->appending(current, 9);
+		die("Input Failure");
 	}
 
 	else
@@ -242,25 +231,8 @@ int LL::getCount(LL* head) //counts how many nodes inside of linked list
 	return count;
 }
 
-LL::~LL()
-{
-	LL *nodePtr;
-	LL *nextNode;
-
-	nodePtr = next;
-
-	while( nodePtr != NULL)
-	{
-		nextNode = nodePtr->next;
-
-		delete nodePtr;
-
-		nodePtr = nextNode;
-	}
-}
-
 bool LL::die(const string & msg) //ends program on bad input
 {
 	cout << "Fatal error: " << msg << endl;
-	exit(EXIT_FAILURE);	
+	exit(EXIT_FAILURE);
 }

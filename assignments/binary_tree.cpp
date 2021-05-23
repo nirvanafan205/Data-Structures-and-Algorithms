@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -14,10 +15,11 @@ struct Nodes
 Nodes* create(int data);
 
 //inorder traversal of binary tree
-void inOrder(Nodes* temp);
+void inOrder(Nodes* temp, queue<int> &tree);
 
 int main()
 {
+	queue<int> bst;
 	Nodes* root = create(27); //begining of tree
 
 	//left side of tree
@@ -31,7 +33,13 @@ int main()
 	root->right->right = create(57);
 
 	//calling to print binary tree inorder
-	inOrder(root);
+	inOrder(root, bst);
+
+	while(!bst.empty() )
+	{
+		cout << bst.front() << " ";
+		bst.pop();
+	}
 }
 
 Nodes* create(int data)
@@ -48,14 +56,12 @@ Nodes* create(int data)
 	return newNode;
 }
 
-void inOrder(Nodes* temp)
+void inOrder(Nodes* temp, queue<int> &tree)
 {
-	if(temp == NULL)
+	if(temp)
 	{
-		return;
+		inOrder(temp->left, tree);
+		tree.push(temp->data);
+		inOrder(temp->right, tree);
 	}
-
-	inOrder(temp->left);
-	cout << temp->data << ' ';
-	inOrder(temp->right);
 }

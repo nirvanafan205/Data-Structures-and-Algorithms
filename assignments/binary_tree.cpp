@@ -17,6 +17,12 @@ Nodes* create(int data);
 //inorder traversal of binary tree
 void inOrder(Nodes* temp, queue<int> &tree);
 
+void sort(queue<int> &q);
+
+void push(queue<int> &q, int temp, int size);
+
+void FtoL(queue<int> &q, int qsize);
+
 int main()
 {
 	queue<int> bst;
@@ -34,6 +40,7 @@ int main()
 
 	//calling to print binary tree inorder
 	inOrder(root, bst);
+	sort(bst);
 
 	while(!bst.empty() )
 	{
@@ -64,4 +71,61 @@ void inOrder(Nodes* temp, queue<int> &tree)
 		tree.push(temp->data);
 		inOrder(temp->right, tree);
 	}
+}
+
+
+void sort(queue<int> &q)
+{
+
+	if(q.empty() )
+	{
+		return;
+	}
+
+	int temp = q.front();
+
+	q.pop();
+
+	sort(q);
+
+	push(q, temp, q.size() );
+}
+
+
+void push(queue<int> &q, int temp, int size)
+{
+	if(q.empty() || size == 0)
+	{
+		q.push(temp);
+		return;
+	}
+
+	else if(temp <= q.front() )
+	{
+		q.push(temp);
+
+
+		FtoL(q, size);
+	}
+
+	else
+	{
+		q.push(q.front() );
+		q.pop();
+
+		push(q, temp, size - 1);
+	}
+}
+
+void FtoL(queue<int> &q, int qsize)
+{
+	if(qsize <= 0)
+	{
+		return;
+	}
+
+	q.push(q.front() );
+	q.pop();
+
+	FtoL(q, qsize - 1);
 }
